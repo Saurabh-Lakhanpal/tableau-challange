@@ -15,7 +15,7 @@ This project aggregates data from the Citi Bike Trip History Logs to uncover two
 - Identification of bikes (by ID) likely due for repair or inspection.
 - Variability in bike utilization.
 
-## citibike-tableau-Solution
+## Citibike Solution
 - [Citi Bike Tableau Story](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBikeAnalysis_17422278378610/JerseyCityBikesStory)
 - [Ourliers Tableau Dashbaord](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBikeAnalysis-Outliers/Outliers)
 - To use this Repository:
@@ -24,7 +24,7 @@ This project aggregates data from the Citi Bike Trip History Logs to uncover two
   - This shall scrape the data csvs and create a clean useable file in Resources/Tableau folder.
   - Use the created Jul22_to_Jul23.csv in Tableau for Analysis.
 
-**Tableau Story:**
+## **Analysis**
 
 **1. Summary Data:**
 
