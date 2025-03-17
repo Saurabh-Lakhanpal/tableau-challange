@@ -1,5 +1,5 @@
 # tableau-challange
-# Citi Bike Trip Analysis Project
+# Citi Bike Trip Analysis 
 
 ## Overview
 This project aggregates data from the Citi Bike Trip History Logs to uncover two unexpected phenomena. By analyzing the data, designing visualizations, and creating dashboards, we aim to provide insights for city officials to improve New York City's bike-sharing program. The findings will be presented in a Tableau story, including static or dynamic maps as specified.
