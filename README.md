@@ -16,13 +16,13 @@ This project aggregates data from the Citi Bike Trip History Logs to uncover two
 - Variability in bike utilization.
 
 ## citibike-tableau-Solution
-- [Story](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBikeAnalysis_17422278378610/JerseyCityBikesStory)
-- [Ourliers](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBikeAnalysis-Outliers/Outliers)
+- [Citi Bike Tableau Story](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBikeAnalysis_17422278378610/JerseyCityBikesStory)
+- [Ourliers Tableau Dashbaord](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBikeAnalysis-Outliers/Outliers)
 - To use this Repository:
   - Clone the repository.
-  - Run the ETL File and run it.
-  - This shall scrape the data csv and create a clean useable file in Resources/Tableau.
-  - Use the Jul22_to_Jul23.csv in Tableau for Analysis.
+  - Run the ETL File.
+  - This shall scrape the data csvs and create a clean useable file in Resources/Tableau folder.
+  - Use the created Jul22_to_Jul23.csv in Tableau for Analysis.
 
 **Tableau Story:**
 
