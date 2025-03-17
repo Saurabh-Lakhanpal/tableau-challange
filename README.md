@@ -34,20 +34,28 @@ This project aggregates data from the Citi Bike Trip History Logs to uncover two
   The average distance traveled per ride is 1.164 kilometers, with an average duration of 10.19 minutes.
   This aligns with the bike hire policy, which encourages rides of no more than 30 minutes for casual riders and 45 minutes for members at a time.
   
+![image](https://github.com/user-attachments/assets/cfe3ae00-1257-43ed-a74b-1acd38a80e2f)
+
 **2. Peak Times to Ride:**
 
   Peak ride hours are typically around 5 pm and 6 pm, with summer being the preferred season due to favorable weather. Midweek, specifically Wednesday, Thursday, and Friday, sees the highest ridership. Daily ridership shows a seasonal pattern, with fewer rides in winter and the most in summer.
   Members primarily use bikes for commuting, with peak usage in the mornings (8 am) and evenings (5 pm, 6 pm) on weekdays, peaking on Wednesdays. Their usage follows a seasonal trend throughout the year.
   Casual riders favor evening rides, with summer and fall being their top seasons, and weekends, especially Saturdays, are popular. The yearly trend for casual riders is also seasonal, with a higher proportion during the summer, likely due to tourists visiting the city.
 
+![image](https://github.com/user-attachments/assets/029ae0ba-60d2-4045-8d02-8bac4c465268)
+
 **3. Top 10 Stations:**
 
   The top 10 Start Stations by average daily rides are identical to the top 10 End Stations, and they are in the same order. Four stations (2. Hoboken Terminal - River St & Hudson Pl, 3. South Waterfront Walkway, 4. Hoboken Terminal - Hudson St & Hudson, and 5. City Hall) are located within a 300m radius in zipcode 07030. The other two stations within 200m of each other in the top 10 are Newport PATH and Newport Pkwy in zipcode 07310. Additionally, most Start and End Stations tend to be within 2 kilometers of each other and are usually located within the same zipcode.
+
+![image](https://github.com/user-attachments/assets/221c5013-bfd4-4a7d-b7ad-d55db286ea4d)
 
 **4. Casual vs Member Rides:**
 
   Casual rides have a longer average duration and cover more distance than member rides. This also holds true for classic and electric bikes. Note. 'docked bikes' are only used in casual rides.
   Member rides tend to cover a slightly larger area of New Jersey compared to casual rides. The majority of both member and casual rides start in areas with '2018 Per Capita Income' ranging from $37,200 to $461,000, as indicated by the grey shades in the background. Interestingly, these areas coincide with the two zip codes where most rides begin, namely 07030 (Hoboken) and 07302 (Kearny).
+
+![image](https://github.com/user-attachments/assets/d3eb8140-15ba-4028-a3bf-7aafa078ff32)
 
 **Outliers Dashboard:**
 
@@ -55,6 +63,8 @@ This project aggregates data from the Citi Bike Trip History Logs to uncover two
   Most rides fall within a 15-minute duration, as seen in the histogram of ride counts by duration. The billing structure encourages shorter rides to limit both distance and bike availability for others.
   When examining bike types, docked bikes show a longer average duration but the shortest distance. This suggests possible docking issues or faults. Note that rides by staff or during servicing have already been excluded from the data.
   Rides with durations exceeding 120 minutes were removed from the analysis to prevent skewing the results.
+
+![image](https://github.com/user-attachments/assets/5a902e97-0cc0-4b2e-a5c3-8272fa609b32)
 
 **Data:** https://s3.amazonaws.com/tripdata/index.html
   - JC-202207-citbike-tripdata.csv
