@@ -1,82 +1,149 @@
-# tableau-challange
-# Citi Bike Trip Analysis 
+# Tableau-CitiBike
 
-## Overview
-This project aggregates data from the Citi Bike Trip History Logs to uncover two unexpected phenomena. By analyzing the data, designing visualizations, and creating dashboards, we aim to provide insights for city officials to improve New York City's bike-sharing program. The findings will be presented in a Tableau story, including static or dynamic maps as specified.
+![citi-bike](Images/citi-bike-station-bikes.jpg)
 
-## Key Questions to Explore
-- Total number of trips during the selected period.
-- Percentage growth in total ridership.
-- Changes in proportions of short-term customers vs. annual subscribers.
-- Peak hours of usage during summer and winter months.
-- Identification of the top and bottom 10 stations for starting and ending journeys.
-- Analysis of trip duration by user type.
-- Average distance of bike trips.
-- Identification of bikes (by ID) likely due for repair or inspection.
-- Variability in bike utilization.
+Link to [citibike Analysis](https://public.tableau.com/profile/sara7063#!/vizhome/CitiBike_Analysis_16131005084360/citibikeNYCAnalysis)
 
-## Citibike Solution
-- [Citi Bike Tableau Story](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBikeAnalysis_17422278378610/JerseyCityBikesStory)
-- [Ourliers Tableau Dashbaord](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBikeAnalysis-Outliers/Outliers)
-- To use this Repository:
-  - Clone the repository.
-  - Run the ETL File.
-  - This shall scrape the data csvs and create a clean useable file in Resources/Tableau folder.
-  - Use the created Jul22_to_Jul23.csv in Tableau for Analysis.
+## Table of contents
+* [Technologies](#technologies)
+* [Objective](#objective)
+* [Data Cleaning](#data-cleaning)
+* [Data Aggregation](#data-aggregation)
+* [Visualizations](#visualizations)
+* [Analysis](#analysis)
+* [Tableau Story](#tableau-story)
+* [Resources](#resources)
 
-## **Analysis**
+## Technologies
+* [Tableau](https://www.tableau.com/) 
+* Jupyter Notebook
+* Pandas
 
-**1. Summary Data:**
+## Objective
+citibike NYC Rider and Station Analysis: 2019 vs 2020 
 
-  Citibike Start Stations are primarily concentrated in zip codes 07302 (Kearney) and 07030 (Hoboken).
-  Member rides account for 70% of total rides, with casual rides making up the remaining 30%. 
-  Classic bikes are the most popular choice, representing 78% of all rides, followed by electric bikes at 21%, and docked bikes at 1%. 
-  The average distance traveled per ride is 1.164 kilometers, with an average duration of 10.19 minutes.
-  This aligns with the bike hire policy, which encourages rides of no more than 30 minutes for casual riders and 45 minutes for members at a time.
+citibike Ridership: Pre- COVID-19 vs. During-COVID-19 
   
-![image](https://github.com/user-attachments/assets/cfe3ae00-1257-43ed-a74b-1acd38a80e2f)
+*Has the customer base changed? 
+*Have the top station locations changed due to WFH lifestyle? 
+*Have the trip totals gone up or down due to COVID-19 pandemic? 
+  
+The following visualizations will illustrate citibike ridership data from August, September, October 2019 as compared to August, September, October 2020. 
+  
+These months were selected because the weather is nice, so bike riding is one of the preferred ideal mode of transportation. The data is representative of Tourism in August as well as student populations in September.
 
-**2. Peak Times to Ride:**
+## Data Cleaning
 
-  Peak ride hours are typically around 5 pm and 6 pm, with summer being the preferred season due to favorable weather. Midweek, specifically Wednesday, Thursday, and Friday, sees the highest ridership. Daily ridership shows a seasonal pattern, with fewer rides in winter and the most in summer.
-  Members primarily use bikes for commuting, with peak usage in the mornings (8 am) and evenings (5 pm, 6 pm) on weekdays, peaking on Wednesdays. Their usage follows a seasonal trend throughout the year.
-  Casual riders favor evening rides, with summer and fall being their top seasons, and weekends, especially Saturdays, are popular. The yearly trend for casual riders is also seasonal, with a higher proportion during the summer, likely due to tourists visiting the city.
+I collected the data from [Citi Bike Data](https://www.citibikenyc.com/system-data).  I used Citi Bike trip history csv files from August, September and October of 2019 and August, September, and October of 2020. The files are very large and include trip and rider data from every station trip for the entire month. I used `pandas` in a jupyter notebook to clean the data. I used the `concat` function to combine all the csv files into one `dataframe`. 
 
-![image](https://github.com/user-attachments/assets/029ae0ba-60d2-4045-8d02-8bac4c465268)
+![concat](Images/concat.JPG)
 
-**3. Top 10 Stations:**
+Then I separated the ‘year’ and ‘month’ information from the ‘start date’ column. This helped clearly visualize the date in my tableau story. 
 
-  The top 10 Start Stations by average daily rides are identical to the top 10 End Stations, and they are in the same order. Four stations (2. Hoboken Terminal - River St & Hudson Pl, 3. South Waterfront Walkway, 4. Hoboken Terminal - Hudson St & Hudson, and 5. City Hall) are located within a 300m radius in zipcode 07030. The other two stations within 200m of each other in the top 10 are Newport PATH and Newport Pkwy in zipcode 07310. Additionally, most Start and End Stations tend to be within 2 kilometers of each other and are usually located within the same zipcode.
+![clean year](Images/clean_year.JPG)
 
-![image](https://github.com/user-attachments/assets/221c5013-bfd4-4a7d-b7ad-d55db286ea4d)
+![clean month](Images/clean_month.JPG)
 
-**4. Casual vs Member Rides:**
+Rider gender was represented by numeric values in the original data set so I assigned ‘male’ and ‘female’ values in place of the numbers to be more meaningful. 
 
-  Casual rides have a longer average duration and cover more distance than member rides. This also holds true for classic and electric bikes. Note. 'docked bikes' are only used in casual rides.
-  Member rides tend to cover a slightly larger area of New Jersey compared to casual rides. The majority of both member and casual rides start in areas with '2018 Per Capita Income' ranging from $37,200 to $461,000, as indicated by the grey shades in the background. Interestingly, these areas coincide with the two zip codes where most rides begin, namely 07030 (Hoboken) and 07302 (Kearny).
+![gender](Images/gender_clean.JPG)
 
-![image](https://github.com/user-attachments/assets/d3eb8140-15ba-4028-a3bf-7aafa078ff32)
+To display age in my visualizations, I calculated the rider age by subtracting the riders ‘birth year’ by the ‘Trip Year’. I created a new column for ‘Rider Age’.
 
-**Outliers Dashboard:**
+![age](Images/clean_age.JPG)
 
-  Citibike riders have specific ride duration allowances: Casual riders get 30 minutes per ride and are billed $0.26/minute afterward, while Members get 45 minutes per ride and are billed $0.17/minute afterward.
-  Most rides fall within a 15-minute duration, as seen in the histogram of ride counts by duration. The billing structure encourages shorter rides to limit both distance and bike availability for others.
-  When examining bike types, docked bikes show a longer average duration but the shortest distance. This suggests possible docking issues or faults. Note that rides by staff or during servicing have already been excluded from the data.
-  Rides with durations exceeding 120 minutes were removed from the analysis to prevent skewing the results.
+I included the ‘unknown’ genders and outlying rider ages in my data sets, but I filtered them out of the final visualizations for clarity. 
 
-![image](https://github.com/user-attachments/assets/5a902e97-0cc0-4b2e-a5c3-8272fa609b32)
+## Data Aggregation
 
-**Data:** https://s3.amazonaws.com/tripdata/index.html
-  - JC-202207-citbike-tripdata.csv
-  - JC-202208-citibike-tripdata.csv
-  - JC-202209-citibike-tripdata.csv
-  - JC-202210-citibike-tripdata.csv
-  - JC-202211-citibike-tripdata.csv
-  - JC-202212-citibike-tripdata.csv
-  - JC-202301-citibike-tripdata.csv
-  - JC-202302-citibike-tripdata.csv
-  - JC-202303-citibike-tripdata.csv
-  - JC-202304-citibike-tripdata.csv
-  - JC-202305-citibike-tripdata.csv
-  - JC-202306-citibike-tripdata.csv
-  - JC-202307-citibike-tripdata.csv
+The date from citibike was exceptionally large and was too big to use in Tableau in its original form. I created different aggregations of the data sets to make smaller data frames that would be ok to use in Tableau Public. The smaller data frames also made visualizations easier to display. 
+
+To create the total citibike trips per year, I used the `.groupby` function to group the data by ‘Trip Year’ and ‘Trip month’ and count the total trips. 
+
+` month_df = clean_df3.groupby(['Trip Year','Trip Month']).count() `
+
+![Total Data](Images/total_data.JPG)
+
+To create the user data frame, I used the `.groupby` function and grouped the data by ‘Trip Year’, ‘Trip Month’, ‘Rider Gender’, ‘Rider Age’, and ‘User Type’. I added ` .count() ` to calculate the sum of each group. 
+
+` user_df1 = user_df.groupby(["Trip Year", "Trip Month", 'Rider Gender', 'Rider Age', 'User Type']).count() `
+
+![user df](Images/agg_user.JPG)
+
+## Visualizations 
+
+To create visualizations in Tableau, I imported my data sets and joined them on common fields such as ‘station name’ and ‘longitude’ and ‘latitude’. 
+
+I used year, gender, and age as filters in my visualizations. The main purpose of my story was to compare ridership and stations data from 2019 and 2020. I used a filter for ‘Trip Year’ to create duplicate charts for each year. 
+
+![year filter](Images/year_filter.JPG)
+
+As part of the story telling process, I played with different versions of the visualizations displaying the same data to see which version was more impactful and clear. Below you can see two versions of ‘Ridership by Age and Gender’. The bar chart has more specific data displayed clearly, but the overall look of the chart is overwhelming. 
+![bar chart age](Images/rider_age1.JPG)
+
+The line chart shows less details but is clear and clean as a visualization.
+
+![line chart age](Images/rider_age2.JPG)
+
+For the map visualizations, I used ‘Longitude’ as the column value and ‘Latitude’ as the row value. I then plotted the points as ‘sum’ of station total trips. 
+
+![long/lat](Images/long_lat.JPG)
+
+I used color to show the value of the map points- blue representing less trips and red representing more trips. I also added specific tool tips to display all relevant data points associated to station locations. 
+
+![color map](Images/color_map.JPG)
+
+To add the zip code layer, I used Map Layers. 
+
+![map layers](Images/map_layers.JPG)
+
+I used the ‘create set’ calculation when creating my visualizations showing the Top 10 trip stations. 
+
+![create set](Images/create_set.JPG)
+
+## Analysis
+
+After reviewing the visualizations, I concluded the following:
+
+![conclusion](Images/conclusion.JPG)
+
+## Tableau Story
+
+Below is the final Tableau Story. You can also view it on the Tableau Public site- [citibike Analysis](https://public.tableau.com/profile/sara7063#!/vizhome/CitiBike_Analysis_16131005084360/citibikeNYCAnalysis)
+
+
+![intro](Images/intro.JPG)
+
+![rider age](Images/rider_age.JPG)
+
+![rider type](Images/rider_subscription.JPG)
+
+![start stations](Images/start_station_trips.JPG)
+
+![top 10 start](Images/top_10_start_bub.JPG)
+
+![top 10 start map](Images/top_10_start_map.JPG)
+
+![end stations](Images/end_station_trip.JPG)
+
+![top 10 end](Images/top_10_end_bub.JPG)
+
+![top 10 end map](Images/top_10_end_map.JPG)
+
+![conclusion](Images/conculsion.JPG)
+
+## Resources
+
+CitiBike Data Sources:
+
+[201907-citibike-tripdata.csv](https://s3.amazonaws.com/tripdata/201907-citibike-tripdata.csv.zip)
+
+[201908-citibike-tripdata.csv](https://s3.amazonaws.com/tripdata/201908-citibike-tripdata.csv.zip)
+
+[201910-citibike-tripdata.csv](https://s3.amazonaws.com/tripdata/201910-citibike-tripdata.csv.zip)
+
+[202008-citibike-tripdata.csv](https://s3.amazonaws.com/tripdata/202008-citibike-tripdata.csv.zip)
+
+[202009-citibike-tripdata.csv](https://s3.amazonaws.com/tripdata/202009-citibike-tripdata.csv.zip)
+
+[202010-citibike-tripdata.csv](https://s3.amazonaws.com/tripdata/202010-citibike-tripdata.csv.zip)
