@@ -5,7 +5,6 @@
 ## Link to [Tableau citibike Analysis](https://public.tableau.com/app/profile/saurabh.lakhanpal/viz/CitiBike_17423893989800/citibikeNYCAnalysis)
 
 ## Table of contents
-* [Technologies](#technologies)
 * [Objective](#objective)
 * [Data Cleaning](#data-cleaning)
 * [Data Aggregation](#data-aggregation)
@@ -13,11 +12,6 @@
 * [Analysis](#analysis)
 * [Tableau Story](#tableau-story)
 * [Resources](#resources)
-
-## Technologies
-* [Tableau](https://www.tableau.com/) 
-* Jupyter Notebook
-* Pandas
 
 ## Objective
 citibike NYC Rider and Station Analysis: 2019 vs 2020 
